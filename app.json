@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "MetSeries",
+    "slug": "MetSeries",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
