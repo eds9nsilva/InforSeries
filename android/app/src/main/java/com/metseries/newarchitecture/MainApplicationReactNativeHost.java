@@ -24,7 +24,7 @@ import com.metseries.newarchitecture.components.MainComponentsRegistry;
 import com.metseries.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.react.rnspinkit.RNSpinkitPackage;   
 /**
  * A {@link ReactNativeHost} that helps you load everything needed for the New Architecture, both
  * TurboModule delegates and the Fabric Renderer.
@@ -45,6 +45,7 @@ public class MainApplicationReactNativeHost extends ReactNativeHost {
   @Override
   protected List<ReactPackage> getPackages() {
     List<ReactPackage> packages = new PackageList(this).getPackages();
+    new RNSpinkitPackage();
     // Packages that cannot be autolinked yet can be added manually here, for example:
     //     packages.add(new MyReactNativePackage());
     // TurboModules must also be loaded here providing a valid TurboReactPackage implementation:
