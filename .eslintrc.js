@@ -28,5 +28,7 @@ module.exports = {
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     'jest/no-identical-title': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    'react/display-name': 'off',
   },
 };
