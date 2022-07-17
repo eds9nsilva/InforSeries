@@ -1,5 +1,6 @@
 import * as React from 'react';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import {useNavigation} from '@react-navigation/native';
 import {colors} from '../../global/styles/colors';
 import {
   ImageBackground,
@@ -31,7 +32,12 @@ const slides = [
   },
 ];
 
+interface ScreenNavigationProp {
+  navigate: (screem: string) => void;
+}
+
 export const Welcome: React.FunctionComponent = () => {
+  const navigation = useNavigation<ScreenNavigationProp>();
   const renderItem = ({item}: any) => {
     return (
       <ImageBackground source={item.image}>
@@ -57,7 +63,10 @@ export const Welcome: React.FunctionComponent = () => {
           </ButtonNext>
         )}
         renderDoneButton={() => (
-          <ButtonNext>
+          <ButtonNext
+            onPress={() => {
+              navigation.navigate('Home');
+            }}>
             <TextButton>Done</TextButton>
           </ButtonNext>
         )}
