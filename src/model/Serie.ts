@@ -25,4 +25,5 @@ export interface ISerie {
   rating: IRating;
   network: INetwork;
   image: IImage;
+  summary: string;
 }
