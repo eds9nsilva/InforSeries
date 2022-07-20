@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  Button,
-  Container,
-  ImageBackground,
-  Average,
-  AverageText,
-} from './styles';
+import {Button, ImageBackground, Average, AverageText} from './styles';
 
 interface IParams {
   image: string;
@@ -13,9 +7,14 @@ interface IParams {
 }
 
 export const SeriesListHorizontal: React.FC<IParams> = ({image, average}) => {
+  const [loadingImage, setLoadingImage] = React.useState<boolean>();
+
   return (
     <Button>
-      <ImageBackground source={{uri: image}}>
+      <ImageBackground
+        source={{uri: image}}
+        onLoadStart={() => setLoadingImage(true)}
+        onLoadEnd={() => setLoadingImage(false)}>
         {average !== null && (
           <Average>
             <AverageText>{average}</AverageText>

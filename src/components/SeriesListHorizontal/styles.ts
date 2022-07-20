@@ -5,11 +5,13 @@ export const Container = styled.View`
 `;
 
 export const Button = styled.TouchableOpacity`
-  width: 200px;
   background-color: ${({theme}) => theme.colors.red};
-  height: 200px;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  width: 200px;
   margin: 10px;
-  border-radius: 22px;
+  border-radius: 44px;
 `;
 
 export const ImageBackground = styled.ImageBackground`

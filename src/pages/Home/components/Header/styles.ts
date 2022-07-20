@@ -5,12 +5,13 @@ import LinearGradient from 'react-native-linear-gradient';
 export const Container = styled.View`
   background-color: transparent;
   width: 100%;
-  height: 500px;
+  height: 400px;
 `;
 
 export const ImageBackground = styled.ImageBackground`
   flex: 1;
   z-index: -99;
+  justify-content: center;
 `;
 
 export const ContentTop = styled.View`
@@ -34,7 +35,7 @@ export const Content = styled.View`
   justify-content: flex-end;
   flex: 1;
   margin-left: 10%;
-  margin-bottom: 30%;
+  margin-bottom: 10%;
 `;
 
 export const Icon = styled(Feather)`
