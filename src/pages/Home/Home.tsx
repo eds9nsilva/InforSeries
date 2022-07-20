@@ -9,7 +9,7 @@ export const Home: React.FunctionComponent = () => {
   const {series} = React.useContext(SerieContext);
   const page1 = series.slice(0, 175);
   const page2 = series.slice(175, 250);
-  //226
+
   return (
     <Container>
       <ScrollView>

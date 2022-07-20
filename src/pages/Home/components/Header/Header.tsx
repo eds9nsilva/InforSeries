@@ -18,12 +18,23 @@ import {
   ContentTop,
   IconsTop,
 } from './styles';
+import {useNavigation} from '@react-navigation/native';
+
+interface ScreenNavigationProp {
+  navigate: (screem: string, serie: ISerie) => void;
+}
 
 interface IParams {
   data: ISerie;
 }
 
 export default function ({data}: IParams) {
+  const navigation = useNavigation<ScreenNavigationProp>();
+
+  function handleNavigate() {
+    navigation.navigate('Details', data);
+  }
+
   return (
     <Container>
       <ImageBackground source={{uri: data.image.original}}>
@@ -45,7 +56,7 @@ export default function ({data}: IParams) {
               <SubText>{data.rating.average}</SubText>
               <Icon name="star" size={24} />
             </ContentSubText>
-            <Button>
+            <Button onPress={() => handleNavigate()}>
               <Icon name="play-circle" size={24} />
               <TextButton>View details</TextButton>
             </Button>
