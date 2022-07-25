@@ -8,7 +8,7 @@ export const ImageBackground = styled.ImageBackground`
 `;
 
 export const ContentText = styled.View`
-  margin-bottom: 33%;
+  margin-bottom: 20%;
 `;
 
 export const Title = styled.Text`

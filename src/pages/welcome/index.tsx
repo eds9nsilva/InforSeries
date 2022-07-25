@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 import * as React from 'react';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import {useNavigation} from '@react-navigation/native';
@@ -10,7 +11,6 @@ import {
   ButtonNext,
   TextButton,
 } from './styles';
-
 const slides = [
   {
     key: '1',
@@ -48,28 +48,16 @@ export const Welcome: React.FunctionComponent = () => {
       </ImageBackground>
     );
   };
-
   return (
     <>
       <AppIntroSlider
         data={slides}
         renderItem={renderItem}
-        bottomButton
         dotStyle={{backgroundColor: colors.white}}
         activeDotStyle={{backgroundColor: colors.red}}
-        renderNextButton={() => (
-          <ButtonNext>
-            <TextButton>Get Started</TextButton>
-          </ButtonNext>
-        )}
-        renderDoneButton={() => (
-          <ButtonNext
-            onPress={() => {
-              navigation.navigate('Home');
-            }}>
-            <TextButton>Done</TextButton>
-          </ButtonNext>
-        )}
+        onDone={() => {
+          navigation.navigate('Home');
+        }}
       />
     </>
   );
