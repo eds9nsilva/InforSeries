@@ -1,23 +1,34 @@
+import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
+import {ISerie} from '../../model/Serie';
 import {Button, ImageBackground, Average, AverageText} from './styles';
 
 interface IParams {
-  image: string;
-  average: number;
+  data: ISerie;
 }
 
-export const SeriesListHorizontal: React.FC<IParams> = ({image, average}) => {
+interface ScreenNavigationProp {
+  navigate: (screem: string, serie: ISerie) => void;
+}
+
+export const SeriesListHorizontal: React.FC<IParams> = ({data}) => {
   const [loadingImage, setLoadingImage] = React.useState<boolean>();
 
+  const navigation = useNavigation<ScreenNavigationProp>();
+
+  function handleNavigate() {
+    navigation.navigate('Details', data);
+  }
+
   return (
-    <Button>
+    <Button onPress={handleNavigate}>
       <ImageBackground
-        source={{uri: image}}
+        source={{uri: data.image.medium}}
         onLoadStart={() => setLoadingImage(true)}
         onLoadEnd={() => setLoadingImage(false)}>
-        {average !== null && (
+        {data.rating.average !== null && (
           <Average>
-            <AverageText>{average}</AverageText>
+            <AverageText>{data.rating.average}</AverageText>
           </Average>
         )}
       </ImageBackground>
