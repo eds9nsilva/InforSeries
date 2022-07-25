@@ -11,7 +11,6 @@ export const Button = styled.TouchableOpacity`
   height: 280px;
   width: 200px;
   margin: 10px;
-  border-radius: 44px;
 `;
 
 export const ImageBackground = styled.ImageBackground`
