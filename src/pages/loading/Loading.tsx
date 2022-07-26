@@ -4,6 +4,8 @@ import {colors} from '../../global/styles/colors';
 import Image from '../../assets/logo.png';
 import {Container, Logo} from './styles';
 import {SerieContext} from '../../context/SerieContext';
+import {WelcomeContext} from '../../context/WelcomeContext';
+
 import {useNavigation} from '@react-navigation/native';
 
 interface ScreenNavigationProp {
@@ -12,10 +14,15 @@ interface ScreenNavigationProp {
 
 export const Loading: React.FunctionComponent = () => {
   const {loading} = React.useContext(SerieContext);
+  const {status} = React.useContext(WelcomeContext);
   const navigation = useNavigation<ScreenNavigationProp>();
-
+  console.log(status);
   if (loading === false) {
-    navigation.navigate('Welcome');
+    if (status === false) {
+      navigation.navigate('Welcome');
+    } else {
+      navigation.navigate('Home');
+    }
   }
 
   return (
