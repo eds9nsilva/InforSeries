@@ -16,7 +16,7 @@ export const Loading: React.FunctionComponent = () => {
   const {loading} = React.useContext(SerieContext);
   const {status} = React.useContext(WelcomeContext);
   const navigation = useNavigation<ScreenNavigationProp>();
-  console.log(status);
+
   if (loading === false) {
     if (status === false) {
       navigation.navigate('Welcome');
