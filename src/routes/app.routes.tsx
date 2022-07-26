@@ -4,7 +4,7 @@ import {Loading} from '../pages/loading/Loading';
 import {Welcome} from '../pages/welcome';
 import {Home} from '../pages/Home/Home';
 import {Details} from '../pages/Details/Details';
-import { colors } from '../global/styles/colors';
+import {colors} from '../global/styles/colors';
 
 const App = createNativeStackNavigator();
 
