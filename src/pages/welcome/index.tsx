@@ -1,16 +1,10 @@
-/* eslint-disable react/jsx-no-duplicate-props */
 import * as React from 'react';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import {WelcomeContext} from '../../context/WelcomeContext';
 import {useNavigation} from '@react-navigation/native';
 import {colors} from '../../global/styles/colors';
-import {
-  ImageBackground,
-  Title,
-  Text,
-  ContentText,
-  ButtonNext,
-  TextButton,
-} from './styles';
+import {ImageBackground, Title, Text, ContentText} from './styles';
+
 const slides = [
   {
     key: '1',
@@ -37,6 +31,7 @@ interface ScreenNavigationProp {
 }
 
 export const Welcome: React.FunctionComponent = () => {
+  const {postStatus} = React.useContext(WelcomeContext);
   const navigation = useNavigation<ScreenNavigationProp>();
   const renderItem = ({item}: any) => {
     return (
@@ -56,6 +51,7 @@ export const Welcome: React.FunctionComponent = () => {
         dotStyle={{backgroundColor: colors.white}}
         activeDotStyle={{backgroundColor: colors.red}}
         onDone={() => {
+          postStatus(true);
           navigation.navigate('Home');
         }}
       />

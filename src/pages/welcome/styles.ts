@@ -25,19 +25,3 @@ export const Text = styled.Text`
   z-index: 99;
   text-align: center;
 `;
-
-export const TextButton = styled.Text`
-  font-size: 16px;
-  color: ${({theme}) => theme.colors.white};
-  z-index: 99;
-  text-align: center;
-`;
-
-export const ButtonNext = styled.TouchableOpacity`
-  align-items: center;
-  justify-content: center;
-  background-color: ${({theme}) => theme.colors.red};
-  height: 60px;
-  width: 99%;
-  border-radius: 36px;
-`;
