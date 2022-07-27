@@ -30,5 +30,7 @@ module.exports = {
     'jest/no-identical-title': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
     'react/display-name': 'off',
+    'react-native/no-inline-styles': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };
