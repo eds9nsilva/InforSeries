@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {colors} from '../../../../global/styles/colors';
 import {ISerie} from '../../../../model/Serie';
