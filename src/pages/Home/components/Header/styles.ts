@@ -79,3 +79,10 @@ export const Linear = styled(LinearGradient)`
   justify-content: flex-end;
   flex: 1;
 `;
+
+export const ViewLoading = styled.View`
+  margin-left: 45%;
+  margin-top: 45%;
+  position: absolute;
+  z-index: 99;
+`;

@@ -16,8 +16,10 @@ import {
   Logo,
   ContentTop,
   IconsTop,
+  ViewLoading,
 } from './styles';
 import {useNavigation} from '@react-navigation/native';
+import Spinner from 'react-native-spinkit';
 
 interface ScreenNavigationProp {
   navigate: (screem: string, serie: ISerie) => void;
@@ -28,6 +30,7 @@ interface IParams {
 }
 
 export default function ({data}: IParams) {
+  const [loadingImage, setLoadingImage] = React.useState<boolean>(true);
   const navigation = useNavigation<ScreenNavigationProp>();
 
   function handleNavigate() {
@@ -36,7 +39,14 @@ export default function ({data}: IParams) {
 
   return (
     <Container>
-      <ImageBackground source={{uri: data.image.original}}>
+      {loadingImage && (
+        <ViewLoading>
+          <Spinner type="FadingCircleAlt" size={62} color={colors.red} />
+        </ViewLoading>
+      )}
+      <ImageBackground
+        source={{uri: data.image.original}}
+        onLoad={() => setLoadingImage(false)}>
         <Linear
           colors={['transparent', colors.gray]}
           start={{x: 0.0, y: 0.0}}
