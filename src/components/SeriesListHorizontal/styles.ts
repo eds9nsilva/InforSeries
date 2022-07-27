@@ -32,3 +32,10 @@ export const AverageText = styled.Text`
   font-size: 10px;
   color: ${({theme}) => theme.colors.white};
 `;
+
+export const ViewLoading = styled.View`
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 99;
+`;

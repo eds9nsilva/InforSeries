@@ -1,7 +1,16 @@
 import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
 import {ISerie} from '../../model/Serie';
-import {Button, ImageBackground, Average, AverageText} from './styles';
+import Spinner from 'react-native-spinkit';
+
+import {
+  Button,
+  ImageBackground,
+  Average,
+  AverageText,
+  ViewLoading,
+} from './styles';
+import {colors} from '../../global/styles/colors';
 
 interface IParams {
   data: ISerie;
@@ -12,7 +21,7 @@ interface ScreenNavigationProp {
 }
 
 export const SeriesListHorizontal: React.FC<IParams> = ({data}) => {
-  const [loadingImage, setLoadingImage] = React.useState<boolean>();
+  const [loadingImage, setLoadingImage] = React.useState<boolean>(true);
 
   const navigation = useNavigation<ScreenNavigationProp>();
 
@@ -22,10 +31,14 @@ export const SeriesListHorizontal: React.FC<IParams> = ({data}) => {
 
   return (
     <Button onPress={handleNavigate}>
+      {loadingImage && (
+        <ViewLoading>
+          <Spinner type="FadingCircleAlt" size={55} color={colors.white} />
+        </ViewLoading>
+      )}
       <ImageBackground
         source={{uri: data.image.medium}}
-        onLoadStart={() => setLoadingImage(true)}
-        onLoadEnd={() => setLoadingImage(false)}>
+        onLoad={() => setLoadingImage(false)}>
         {data.rating.average !== null && (
           <Average>
             <AverageText>{data.rating.average}</AverageText>
