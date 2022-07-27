@@ -5,6 +5,7 @@ import {ThemeProvider} from 'styled-components';
 import theme from './src/global/styles/theme';
 import {Routes} from './src/routes';
 import {SerieContextProvider} from './src/context/SerieContext';
+import {WelcomeContextProvider} from './src/context/WelcomeContext';
 
 export default function App() {
   return (
@@ -12,7 +13,9 @@ export default function App() {
       <StatusBar backgroundColor="transparent" translucent style="light" />
       <ThemeProvider theme={theme}>
         <SerieContextProvider>
-          <Routes />
+          <WelcomeContextProvider>
+            <Routes />
+          </WelcomeContextProvider>
         </SerieContextProvider>
       </ThemeProvider>
     </NavigationContainer>
