@@ -13,7 +13,7 @@ export const Home: React.FunctionComponent = () => {
   return (
     <Container>
       <ScrollView>
-        <Header data={series[243]} />
+        <Header data={series[242]} />
         <ContentText>
           <Title>Page view 1</Title>
           <SubTitle>See all</SubTitle>
@@ -24,12 +24,7 @@ export const Home: React.FunctionComponent = () => {
           keyExtractor={(item: {id: {toString: () => any}}) =>
             item.id.toString()
           }
-          renderItem={({item}) => (
-            <SeriesListHorizontal
-              average={item.rating.average}
-              image={item.image.medium}
-            />
-          )}
+          renderItem={({item}) => <SeriesListHorizontal data={item} />}
         />
         <ContentText>
           <Title>Page view 2</Title>
@@ -41,12 +36,7 @@ export const Home: React.FunctionComponent = () => {
           keyExtractor={(item: {id: {toString: () => any}}) =>
             item.id.toString()
           }
-          renderItem={({item}) => (
-            <SeriesListHorizontal
-              average={item.rating.average}
-              image={item.image.medium}
-            />
-          )}
+          renderItem={({item}) => <SeriesListHorizontal data={item} />}
         />
       </ScrollView>
     </Container>
