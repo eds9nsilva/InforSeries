@@ -32,5 +32,6 @@ module.exports = {
     'react/display-name': 'off',
     'react-native/no-inline-styles': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-shadow': 'off',
   },
 };
