@@ -1,11 +1,17 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {createContext, ReactElement, useEffect, useState} from 'react';
 import {ISerie} from '../model/Serie';
 import api from '../services/api';
 
 export interface ISerieContext {
   series: ISerie[];
+  favorites: ISerie[];
+  addFavorite(serie: ISerie): void;
+  removeFavorite(serie: ISerie): void;
   loading: boolean;
 }
+
+const FavoriteData = '@MetSeries:Favorite';
 
 interface IProps {
   children: ReactElement;
@@ -17,6 +23,8 @@ export const SerieContextProvider: React.FunctionComponent<IProps> = ({
   children,
 }) => {
   const [series, setSeries] = useState<ISerie[]>([]);
+  const [favorites, setFavorites] = useState<ISerie[]>([]);
+
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     async function loadingSeries(number: number) {
@@ -24,6 +32,10 @@ export const SerieContextProvider: React.FunctionComponent<IProps> = ({
         const seriesData = await api.get<ISerie[]>(`shows?page=${number}`);
         const data = seriesData.data;
         setSeries(data);
+        const favorite = await AsyncStorage.getItem(FavoriteData);
+        if (favorite) {
+          setFavorites(JSON.parse(favorite));
+        }
       } catch (error) {
         throw new Error(error as string);
       }
@@ -32,8 +44,29 @@ export const SerieContextProvider: React.FunctionComponent<IProps> = ({
     const numberPage = 1;
     loadingSeries(numberPage);
   }, []);
+  const addFavorite = async (serie: any) => {
+    try {
+      const newListFavorite = [...favorites, serie];
+      setFavorites(newListFavorite);
+      await AsyncStorage.setItem(FavoriteData, JSON.stringify(newListFavorite));
+    } catch (error) {
+      throw new Error(error as string);
+    }
+  };
+  const removeFavorite = async (serie: any) => {
+    try {
+      const newListFavorite = favorites.filter(
+        series => series.id !== serie.id,
+      );
+      setFavorites(newListFavorite);
+      await AsyncStorage.setItem(FavoriteData, JSON.stringify(newListFavorite));
+    } catch (error) {
+      throw new Error(error as string);
+    }
+  };
   return (
-    <SerieContext.Provider value={{loading, series}}>
+    <SerieContext.Provider
+      value={{loading, series, addFavorite, favorites, removeFavorite}}>
       {children}
     </SerieContext.Provider>
   );
