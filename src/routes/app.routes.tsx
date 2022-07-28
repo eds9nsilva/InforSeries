@@ -4,6 +4,7 @@ import {Loading} from '../pages/loading/Loading';
 import {Welcome} from '../pages/welcome';
 import {Home} from '../pages/Home/Home';
 import {Details} from '../pages/Details/Details';
+import {SeeAll} from '../pages/SeeAll/SeeAll';
 import {colors} from '../global/styles/colors';
 
 const App = createNativeStackNavigator();
@@ -27,6 +28,17 @@ export const AppRoutes: React.FunctionComponent = () => {
         component={Details}
         options={{
           title: 'Details',
+          headerTintColor: colors.white,
+          headerStyle: {
+            backgroundColor: colors.gray,
+          },
+        }}
+      />
+      <App.Screen
+        name="SeeAll"
+        component={SeeAll}
+        options={{
+          title: 'See all',
           headerTintColor: colors.white,
           headerStyle: {
             backgroundColor: colors.gray,
