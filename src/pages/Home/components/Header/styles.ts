@@ -26,8 +26,8 @@ export const IconsTop = styled.View`
 `;
 
 export const Logo = styled.Image`
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
 `;
 
 export const Content = styled.View`
