@@ -24,7 +24,6 @@ export const SerieContextProvider: React.FunctionComponent<IProps> = ({
 }) => {
   const [series, setSeries] = useState<ISerie[]>([]);
   const [favorites, setFavorites] = useState<ISerie[]>([]);
-
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     async function loadingSeries(number: number) {

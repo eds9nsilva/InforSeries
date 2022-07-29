@@ -25,14 +25,10 @@ import Spinner from 'react-native-spinkit';
 export const Details: React.FunctionComponent = () => {
   const {favorites, addFavorite, removeFavorite} = useContext(SerieContext);
   const [loadingImage, setLoadingImage] = useState<boolean>(true);
-  const [isFavorite, setIsFavorite] = useState<boolean>(true);
   const route = useRoute();
   const data = route.params as ISerie;
-  const verifcarFavorite = favorites.find(series => series.id === data.id);
-  if (verifcarFavorite === undefined) {
-    console.log('É favorito');
-    setIsFavorite(false);
-  }
+  const checkFavoriteExist = favorites.find(series => series.id === data.id);
+
   const {width} = useWindowDimensions();
   const source = {
     html: `${data.summary}`,
@@ -57,15 +53,15 @@ export const Details: React.FunctionComponent = () => {
       alert(error.message);
     }
   };
-  /*
-  function handleFavorite() {
-    setIsFavorite(!isFavorite);
-    if (isFavorite) {
+
+  const handleFavorite = () => {
+    if (checkFavoriteExist) {
       removeFavorite(data);
     } else {
       addFavorite(data);
     }
-  }*/
+  };
+
   return (
     <Container>
       <ScrollView>
@@ -84,7 +80,8 @@ export const Details: React.FunctionComponent = () => {
             <Icon
               name="heart"
               size={28}
-              color={isFavorite ? colors.red : colors.white}
+              color={checkFavoriteExist ? colors.red : colors.white}
+              onPress={handleFavorite}
             />
             <Icon
               name="share-2"
