@@ -33,5 +33,6 @@ module.exports = {
     'react-native/no-inline-styles': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-shadow': 'off',
+    'react/no-unstable-nested-components': 'off',
   },
 };
