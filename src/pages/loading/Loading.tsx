@@ -21,7 +21,7 @@ export const Loading: React.FunctionComponent = () => {
     if (status === false) {
       navigation.navigate('Welcome');
     } else {
-      navigation.navigate('Home');
+      navigation.navigate('MainBottom');
     }
   }
 

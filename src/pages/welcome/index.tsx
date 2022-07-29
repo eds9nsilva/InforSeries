@@ -52,7 +52,7 @@ export const Welcome: React.FunctionComponent = () => {
         activeDotStyle={{backgroundColor: colors.red}}
         onDone={() => {
           postStatus(true);
-          navigation.navigate('Home');
+          navigation.navigate('MainBottom');
         }}
       />
     </>
