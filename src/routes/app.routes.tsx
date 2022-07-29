@@ -6,12 +6,21 @@ import {Home} from '../pages/Home/Home';
 import {Details} from '../pages/Details/Details';
 import {SeeAll} from '../pages/SeeAll/SeeAll';
 import {colors} from '../global/styles/colors';
+import TabRoutes from './tab.routes';
 
 const App = createNativeStackNavigator();
 
 export const AppRoutes: React.FunctionComponent = () => {
   return (
     <App.Navigator initialRouteName="Loading">
+      <App.Screen
+        name="MainBottom"
+        component={TabRoutes}
+        options={{
+          headerShown: false,
+          gestureEnabled: false,
+        }}
+      />
       <App.Screen
         name="Welcome"
         component={Welcome}
@@ -22,7 +31,6 @@ export const AppRoutes: React.FunctionComponent = () => {
         component={Loading}
         options={{headerShown: false}}
       />
-      <App.Screen name="Home" component={Home} options={{headerShown: false}} />
       <App.Screen
         name="Details"
         component={Details}
