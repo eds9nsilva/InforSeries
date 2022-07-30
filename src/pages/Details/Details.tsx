@@ -78,7 +78,7 @@ export const Details: React.FunctionComponent = () => {
         <Content>
           <ContentIcon>
             <Icon
-              name="heart"
+              name="bookmark"
               size={28}
               color={checkFavoriteExist ? colors.red : colors.white}
               onPress={handleFavorite}
