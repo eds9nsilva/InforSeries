@@ -1,21 +1,12 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  flex: 1;
-`;
-
-export const Content = styled.View`
-  align-items: center;
-  flex: 1;
-`;
-
 export const Button = styled.TouchableOpacity`
   background-color: ${({theme}) => theme.colors.red};
   align-items: center;
   justify-content: center;
   flex-direction: row;
   height: 280px;
-  width: 48%;
+  width: 50%;
 `;
 
 export const ImageBackground = styled.ImageBackground`
