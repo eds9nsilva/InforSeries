@@ -11,11 +11,14 @@ export const Button = styled.TouchableOpacity`
   height: 280px;
   width: 200px;
   margin: 10px;
+  border-radius: 12px;
 `;
 
 export const ImageBackground = styled.ImageBackground`
   height: 100%;
   width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
 `;
 
 export const Average = styled.View`

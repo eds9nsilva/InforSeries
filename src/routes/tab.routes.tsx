@@ -1,6 +1,8 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home} from '../pages/Home/Home';
+import {Explore} from '../pages/Explore/Explore';
+import {MyFavorite} from '../pages/MyFavorite/MyFavorite';
 import {Feather} from '@expo/vector-icons';
 import {colors} from '../global/styles/colors';
 const Tab = createBottomTabNavigator();
@@ -37,7 +39,7 @@ const TabRoutes: React.FC = () => {
           title: 'Explore',
         }}
         name="Explore"
-        component={Home}
+        component={Explore}
       />
       <Tab.Screen
         options={{
@@ -47,7 +49,7 @@ const TabRoutes: React.FC = () => {
           title: 'My Favorites',
         }}
         name="Favorite"
-        component={Home}
+        component={MyFavorite}
       />
     </Tab.Navigator>
   );

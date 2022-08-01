@@ -13,7 +13,6 @@ export const Content = styled.View`
 export const ImageHeader = styled.Image`
   width: 100%;
   height: 550px;
-  filter: blur(7px);
 `;
 
 export const ContentTitle = styled.View`

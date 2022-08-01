@@ -71,7 +71,7 @@ export const Details: React.FunctionComponent = () => {
           </ViewLoading>
         )}
         <ImageHeader
-          source={{uri: data.image.medium}}
+          source={{uri: data.image.original}}
           resizeMode="contain"
           onLoadEnd={() => setLoadingImage(false)}
         />
@@ -81,7 +81,7 @@ export const Details: React.FunctionComponent = () => {
               name="bookmark"
               size={28}
               color={checkFavoriteExist ? colors.red : colors.white}
-              onPress={handleFavorite}
+              onPress={() => handleFavorite}
             />
             <Icon
               name="share-2"

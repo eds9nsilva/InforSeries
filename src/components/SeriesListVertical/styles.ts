@@ -6,12 +6,16 @@ export const Button = styled.TouchableOpacity`
   justify-content: center;
   flex-direction: row;
   height: 280px;
-  width: 50%;
+  width: 48%;
+  border-radius: 12px;
+  margin: 4px;
 `;
 
 export const ImageBackground = styled.ImageBackground`
-  height: 100%;
+  height: 280px;
   width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
 `;
 
 export const Average = styled.View`
