@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "MetSeries",
-    "slug": "MetSeries",
+    "name": "InfoSeries",
+    "slug": "InfoSeries",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
