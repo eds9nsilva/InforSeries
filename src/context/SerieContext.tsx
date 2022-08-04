@@ -8,6 +8,7 @@ export interface ISerieContext {
   favorites: ISerie[];
   addFavorite(serie: ISerie): void;
   removeFavorite(serie: ISerie): void;
+  getSeries(numberPage: number): any;
   loading: boolean;
 }
 
@@ -43,6 +44,18 @@ export const SerieContextProvider: React.FunctionComponent<IProps> = ({
     const numberPage = 1;
     loadingSeries(numberPage);
   }, []);
+
+  const getSeries = async (numberPage: number) => {
+    try {
+      const seriesData = await api.get<ISerie[]>(`shows?page=${numberPage}`);
+      const data = seriesData.data;
+      setLoading(false);
+      return data;
+    } catch (error) {
+      throw new Error(error as string);
+    }
+  };
+
   const addFavorite = async (serie: any) => {
     try {
       const newListFavorite = [...favorites, serie];
@@ -65,7 +78,14 @@ export const SerieContextProvider: React.FunctionComponent<IProps> = ({
   };
   return (
     <SerieContext.Provider
-      value={{loading, series, addFavorite, favorites, removeFavorite}}>
+      value={{
+        loading,
+        series,
+        addFavorite,
+        favorites,
+        removeFavorite,
+        getSeries,
+      }}>
       {children}
     </SerieContext.Provider>
   );
