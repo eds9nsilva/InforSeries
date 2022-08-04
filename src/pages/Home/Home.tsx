@@ -13,10 +13,6 @@ interface ScreenNavigationProp {
 
 export const Home: React.FunctionComponent = () => {
   const {series} = React.useContext(SerieContext);
-  let actionSeries: ISerie[];
-
-
-  console.log(actionSeries.length);
   const page1 = series.slice(0, 175);
   const page2 = series.slice(175, 250);
   const navigation = useNavigation<ScreenNavigationProp>();
