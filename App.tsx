@@ -6,6 +6,7 @@ import theme from './src/global/styles/theme';
 import {Routes} from './src/routes';
 import {SerieContextProvider} from './src/context/SerieContext';
 import {WelcomeContextProvider} from './src/context/WelcomeContext';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 export default function App() {
   return (
@@ -14,7 +15,9 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <SerieContextProvider>
           <WelcomeContextProvider>
-            <Routes />
+            <GestureHandlerRootView style={{flex: 1}}>
+              <Routes />
+            </GestureHandlerRootView>
           </WelcomeContextProvider>
         </SerieContextProvider>
       </ThemeProvider>
