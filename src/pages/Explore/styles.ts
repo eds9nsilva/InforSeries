@@ -38,6 +38,69 @@ export const TextInput = styled.TextInput`
 `;
 export const Icon = styled(Feather)``;
 
+export const ContentFilter = styled.TouchableOpacity`
+  flex-direction: row;
+  margin: 4%;
+`;
+
+export const Text = styled.Text`
+  font-size: 18px;
+  color: ${({theme}) => theme.colors.red};
+`;
+
 export const Content = styled.View`
-  margin-top: 8%;
+  margin-top: 4%;
+`;
+
+export const ContainerModalize = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4%;
+`;
+
+export const ButtonCategory = styled.TouchableOpacity`
+  border-radius: 20px;
+  border: 2px;
+  border-color: ${({theme}) => theme.colors.white};
+  align-items: center;
+  background-color: ${({theme}) => theme.colors.gray300};
+  justify-content: center;
+  margin: 10px;
+  padding: 8px;
+`;
+
+export const TextCategory = styled.Text`
+  font-size: 18px;
+  color: ${({theme}) => theme.colors.white};
+`;
+
+export const ContentModalize = styled.View`
+  flex-direction: row;
+  margin: 2%;
+`;
+
+export const ButtonCategoryIsSelect = styled.TouchableOpacity`
+  border-radius: 20px;
+  border: 2px;
+  border-color: ${({theme}) => theme.colors.red};
+  background-color: ${({theme}) => theme.colors.gray300};
+  margin: 10px;
+  padding: 8px;
+`;
+
+export const TextCategoryIsSelect = styled.Text`
+  font-size: 18px;
+  color: ${({theme}) => theme.colors.red};
+`;
+
+export const ViewButton = styled.View`
+  z-index: 99;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: ${({theme}) => theme.colors.white};
 `;
