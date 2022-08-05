@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {colors} from '../../../../global/styles/colors';
 import {ISerie} from '../../../../model/Serie';
 import logo from '../../../../assets/logo.png';
@@ -20,6 +20,7 @@ import {
 } from './styles';
 import {useNavigation} from '@react-navigation/native';
 import Spinner from 'react-native-spinkit';
+import {SerieContext} from '../../../../context/SerieContext';
 
 interface ScreenNavigationProp {
   navigate: (screem: string, serie: ISerie) => void;
@@ -31,11 +32,40 @@ interface IParams {
 
 export default function ({data}: IParams) {
   const [loadingImage, setLoadingImage] = React.useState<boolean>(true);
+  const {favorites, addFavorite, removeFavorite} = useContext(SerieContext);
+  const [Favorite, setFavorite] = useState<ISerie | undefined>(undefined);
+
   const navigation = useNavigation<ScreenNavigationProp>();
 
   function handleNavigate() {
     navigation.navigate('Details', data);
   }
+
+  const handlerAddFavorite = async () => {
+    setFavorite(data);
+    addFavorite(data);
+  };
+  const handlerRemoveFavorite = async () => {
+    setFavorite(undefined);
+    removeFavorite(data);
+  };
+  const handlerFavorite = () => {
+    if (Favorite) {
+      handlerRemoveFavorite();
+    } else {
+      handlerAddFavorite();
+    }
+  };
+
+  useEffect(() => {
+    async function checkFavoriteExist() {
+      const checkFavorite = favorites.find(series => series.id === data.id);
+      if (checkFavorite) {
+        setFavorite(checkFavorite);
+      }
+    }
+    checkFavoriteExist();
+  }, []);
 
   return (
     <Container>
@@ -54,8 +84,12 @@ export default function ({data}: IParams) {
           <ContentTop>
             <Logo source={logo} />
             <IconsTop>
-              <Icon name="search" size={26} style={{marginRight: 16}} />
-              <Icon name="heart" size={26} />
+              <Icon
+                name="heart"
+                size={26}
+                onPress={handlerFavorite}
+                color={Favorite ? colors.red : colors.white}
+              />
             </IconsTop>
           </ContentTop>
           <Content>
