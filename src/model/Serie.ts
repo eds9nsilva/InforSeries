@@ -1,6 +1,3 @@
-interface IGenres {
-  name: string;
-}
 interface IRating {
   average: number;
 }
@@ -20,7 +17,7 @@ export interface ISerie {
   name: string;
   type: string;
   language: string;
-  genres?: IGenres[];
+  genres?: string[];
   runtime: number;
   rating: IRating;
   network: INetwork;
