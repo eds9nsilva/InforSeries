@@ -35,6 +35,10 @@ A aplicação utiliza a api [TVMaze](https://www.tvmaze.com/api)
 - `TypeScript`
 - `Expo`
 - `Async-storage`
+- `ContextApi`
+- `React-native-app-intro-slider`
+- `React-native-render-html`
+- `React-native-spinkit`
 - `Axios`
 - `Styled-components`
 ---
