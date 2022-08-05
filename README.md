@@ -10,23 +10,23 @@ A aplicação utiliza a api [TVMaze](https://www.tvmaze.com/api)
 
 # Screenshots
 <p align="center">
-  <img width = "200" height= "400" src = "src/assets/Screenshot/Screenshot_1.png">
-  <img width = "200" height= "400" src = "src/assets/Screenshot/Screenshot_2.png">
-  <img width = "200" height= "400" src = "src/assets/Screenshot/Screenshot_3.png">
+  <img width = "250" height= "500" src = "src/assets/Screenshot/Screenshot_1.png">
+  <img width = "250" height= "500" src = "src/assets/Screenshot/Screenshot_2.png">
+  <img width = "250" height= "500" src = "src/assets/Screenshot/Screenshot_3.png">
 </p>
 
 <p align="center">
-  <img width = "200" height= "400" src = "src/assets/Screenshot/Screenshot_4.png">
-  <img width = "200" height= "400" src = "src/assets/Screenshot/Screenshot_5.png">
-  <img width = "200" height= "400" src = "src/assets/Screenshot/Screenshot_6.png"> 
+  <img width = "250" height= "500" src = "src/assets/Screenshot/Screenshot_4.png">
+  <img width = "250" height= "500" src = "src/assets/Screenshot/Screenshot_5.png">
+  <img width = "250" height= "500" src = "src/assets/Screenshot/Screenshot_6.png"> 
 </p>
 <p align="center">
-  <img width = "200" height= "400" src = "src/assets/Screenshot/Screenshot_7.png">
-  <img width = "200" height= "400" src = "src/assets/Screenshot/Screenshot_8.png">
-  <img width = "200" height= "400" src = "src/assets/Screenshot/Screenshot_9.png"> 
+  <img width = "250" height= "500" src = "src/assets/Screenshot/Screenshot_7.png">
+  <img width = "250" height= "500" src = "src/assets/Screenshot/Screenshot_8.png">
+  <img width = "250" height= "500" src = "src/assets/Screenshot/Screenshot_9.png"> 
 </p>
 <p align="center">
-  <img width = "200" height= "400" src = "src/assets/Screenshot/Screenshot_10.png">
+  <img width = "250" height= "500" src = "src/assets/Screenshot/Screenshot_10.png">
 </p>
 
 ## 💻:iphone:Tecnologias utilizadas 
@@ -37,17 +37,15 @@ A aplicação utiliza a api [TVMaze](https://www.tvmaze.com/api)
 - `Async-storage`
 - `Axios`
 - `Styled-components`
-- `React-hook-form`
 ---
 
 ### Clonar o repositório e instalar as dependências
-> :warning: O App está consumindo uma api em nodejs, é necessário clonar e executar a api. [Link da Api e documentação](https://github.com/aluiziodeveloper/api-node-devprofile) 
 
 ```
-$ git clone https://github.com/eds9nsilva/DevProfile.git
+$ git clone https://github.com/eds9nsilva/InforSeries.git
 ```
 ```
-cd DevProfile
+cd InforSeries
 ```
 ##### Instalando as depedências
 ```
