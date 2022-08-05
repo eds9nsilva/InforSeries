@@ -59,8 +59,8 @@ export const SerieContextProvider: React.FunctionComponent<IProps> = ({
   const addFavorite = async (serie: any) => {
     try {
       const newListFavorite = [...favorites, serie];
-      setFavorites(newListFavorite);
       await AsyncStorage.setItem(FavoriteData, JSON.stringify(newListFavorite));
+      setFavorites(newListFavorite);
     } catch (error) {
       throw new Error(error as string);
     }
@@ -70,8 +70,9 @@ export const SerieContextProvider: React.FunctionComponent<IProps> = ({
       const newListFavorite = favorites.filter(
         series => series.id !== serie.id,
       );
-      setFavorites(newListFavorite);
       await AsyncStorage.setItem(FavoriteData, JSON.stringify(newListFavorite));
+      console.log(newListFavorite);
+      setFavorites(newListFavorite);
     } catch (error) {
       throw new Error(error as string);
     }

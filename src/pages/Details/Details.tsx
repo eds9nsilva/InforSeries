@@ -1,5 +1,5 @@
-import React, {useContext, useState} from 'react';
-import {ScrollView, useWindowDimensions, Share} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import {ScrollView, useWindowDimensions, Share, FlatList} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import RenderHtml from 'react-native-render-html';
 import ReadMore from '@fawazahmed/react-native-read-more';
@@ -21,13 +21,16 @@ import {
 } from './styles';
 import {colors} from '../../global/styles/colors';
 import Spinner from 'react-native-spinkit';
+import api from '../../services/api';
+import {Cast} from './components/Cast/Cast';
 
 export const Details: React.FunctionComponent = () => {
   const {favorites, addFavorite, removeFavorite} = useContext(SerieContext);
   const [loadingImage, setLoadingImage] = useState<boolean>(true);
+  const [Favorite, setFavorite] = useState<ISerie | undefined>(undefined);
+  const [cast, setCast] = useState<any>([]);
   const route = useRoute();
   const data = route.params as ISerie;
-  const checkFavoriteExist = favorites.find(series => series.id === data.id);
 
   const {width} = useWindowDimensions();
   const source = {
@@ -53,14 +56,39 @@ export const Details: React.FunctionComponent = () => {
       alert(error.message);
     }
   };
-
-  const handleFavorite = () => {
-    if (checkFavoriteExist) {
-      removeFavorite(data);
+  const handlerAddFavorite = async () => {
+    setFavorite(data);
+    addFavorite(data);
+  };
+  const handlerRemoveFavorite = async () => {
+    setFavorite(undefined);
+    removeFavorite(data);
+  };
+  const handlerFavorite = () => {
+    if (Favorite) {
+      handlerRemoveFavorite();
     } else {
-      addFavorite(data);
+      handlerAddFavorite();
     }
   };
+  const checkFavoriteExist = () => {
+    const checkFavorite = favorites.find(series => series.id === data.id);
+    if (checkFavorite) {
+      setFavorite(checkFavorite);
+    }
+  };
+  useEffect(() => {
+    async function getCast() {
+      try {
+        checkFavoriteExist();
+        const casts = await api.get(`/shows/${data.id}/cast`);
+        setCast(casts.data);
+      } catch (error) {
+        throw new Error(error as string);
+      }
+    }
+    getCast();
+  }, []);
 
   return (
     <Container>
@@ -80,8 +108,8 @@ export const Details: React.FunctionComponent = () => {
             <Icon
               name="bookmark"
               size={28}
-              color={checkFavoriteExist ? colors.red : colors.white}
-              onPress={() => handleFavorite}
+              color={Favorite ? colors.red : colors.white}
+              onPress={handlerFavorite}
             />
             <Icon
               name="share-2"
@@ -121,6 +149,14 @@ export const Details: React.FunctionComponent = () => {
           source={source}
           baseStyle={{color: colors.white, marginLeft: 10, marginRight: 10}}
         />
+        {cast && (
+          <FlatList
+            data={cast}
+            horizontal
+            keyExtractor={item => item.person.id.toString()}
+            renderItem={({item}) => <Cast data={item} />}
+          />
+        )}
       </ScrollView>
     </Container>
   );

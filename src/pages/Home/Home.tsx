@@ -6,6 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import {SeriesListHorizontal} from '../../components/SeriesListHorizontal/SeriesListHorizontal';
 import {Container, Title, ContentText, SubTitle} from './styles';
 import {ISerie} from '../../model/Serie';
+import {filterSeries} from '../../utils/FilterSeries';
 
 interface ScreenNavigationProp {
   navigate: (screem: string, serie: ISerie[]) => void;
@@ -13,8 +14,13 @@ interface ScreenNavigationProp {
 
 export const Home: React.FunctionComponent = () => {
   const {series} = React.useContext(SerieContext);
-  const page1 = series.slice(0, 175);
-  const page2 = series.slice(175, 250);
+
+  const action = filterSeries('Action', series);
+  const drama = filterSeries('Drama', series);
+  const romance = filterSeries('Romance', series);
+  const horror = filterSeries('Horror', series);
+  const fantasy = filterSeries('Fantasy', series);
+
   const navigation = useNavigation<ScreenNavigationProp>();
 
   function handleNavigate(data: ISerie[]) {
@@ -27,62 +33,52 @@ export const Home: React.FunctionComponent = () => {
         <Header data={series[numberIdSerie]} />
         <ContentText>
           <Title>Action</Title>
-          <SubTitle onPress={() => handleNavigate(page1)}>See all</SubTitle>
+          <SubTitle onPress={() => handleNavigate(action)}>See all</SubTitle>
         </ContentText>
         <FlatList
-          data={series}
+          data={action}
           horizontal
-          keyExtractor={(item: {id: {toString: () => any}}) =>
-            item.id.toString()
-          }
+          keyExtractor={item => item.id.toString()}
           renderItem={({item}) => <SeriesListHorizontal data={item} />}
         />
         <ContentText>
           <Title>Drama</Title>
-          <SubTitle onPress={() => handleNavigate(page2)}>See all</SubTitle>
+          <SubTitle onPress={() => handleNavigate(drama)}>See all</SubTitle>
         </ContentText>
         <FlatList
-          data={page2}
+          data={drama}
           horizontal
-          keyExtractor={(item: {id: {toString: () => any}}) =>
-            item.id.toString()
-          }
+          keyExtractor={item => item.id.toString()}
           renderItem={({item}) => <SeriesListHorizontal data={item} />}
         />
         <ContentText>
           <Title>Romance</Title>
-          <SubTitle onPress={() => handleNavigate(page2)}>See all</SubTitle>
+          <SubTitle onPress={() => handleNavigate(romance)}>See all</SubTitle>
         </ContentText>
         <FlatList
-          data={page2}
+          data={romance}
           horizontal
-          keyExtractor={(item: {id: {toString: () => any}}) =>
-            item.id.toString()
-          }
+          keyExtractor={item => item.id.toString()}
           renderItem={({item}) => <SeriesListHorizontal data={item} />}
         />
         <ContentText>
           <Title>Horror</Title>
-          <SubTitle onPress={() => handleNavigate(page2)}>See all</SubTitle>
+          <SubTitle onPress={() => handleNavigate(horror)}>See all</SubTitle>
         </ContentText>
         <FlatList
-          data={page2}
+          data={horror}
           horizontal
-          keyExtractor={(item: {id: {toString: () => any}}) =>
-            item.id.toString()
-          }
+          keyExtractor={item => item.id.toString()}
           renderItem={({item}) => <SeriesListHorizontal data={item} />}
         />
         <ContentText>
-          <Title>Music</Title>
-          <SubTitle onPress={() => handleNavigate(page2)}>See all</SubTitle>
+          <Title>Fantasy</Title>
+          <SubTitle onPress={() => handleNavigate(fantasy)}>See all</SubTitle>
         </ContentText>
         <FlatList
-          data={page2}
+          data={fantasy}
           horizontal
-          keyExtractor={(item: {id: {toString: () => any}}) =>
-            item.id.toString()
-          }
+          keyExtractor={item => item.id.toString()}
           renderItem={({item}) => <SeriesListHorizontal data={item} />}
         />
       </ScrollView>

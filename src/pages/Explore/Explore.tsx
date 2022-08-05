@@ -5,6 +5,7 @@ import {Button} from '../../components/Button/Button';
 import {SeriesListVertical} from '../../components/SeriesListVertical/SeriesListVertical';
 import {SerieContext} from '../../context/SerieContext';
 import {colors} from '../../global/styles/colors';
+import {filterSeries} from '../../utils/FilterSeries';
 import {
   Container,
   ContainerInput,
@@ -29,7 +30,7 @@ export const Explore: React.FunctionComponent = () => {
   const [selectCategory, setSelectCategory] = useState<string[]>([]);
 
   const dataRandom = series.sort(() => Math.random() - 0.5);
-  const [seriesData, setSeriesData] = useState(dataRandom.slice(0, 20));
+  const [seriesData, setSeriesData] = useState(dataRandom);
 
   const modalizeRef = useRef<Modalize>(null);
   const animated = useRef(new Animated.Value(0)).current;
@@ -138,11 +139,10 @@ export const Explore: React.FunctionComponent = () => {
           <Text>Filter</Text>
         </ContentFilter>
         <FlatList
-          data={dataRandom}
+          data={seriesData}
           keyExtractor={(item: {id: {toString: () => any}}) =>
             item.id.toString()
           }
-          onEndReached={() => getNewSeries()}
           numColumns={2}
           showsVerticalScrollIndicator={false}
           renderItem={({item}) => <SeriesListVertical data={item} />}
@@ -181,7 +181,7 @@ export const Explore: React.FunctionComponent = () => {
               })}
             </ScrollView>
           </ContentModalize>
-          <Button title="Ok" />
+          <Button title="Ok" onPress={onClose} />
         </ContainerModalize>
       </Modalize>
     </Container>
