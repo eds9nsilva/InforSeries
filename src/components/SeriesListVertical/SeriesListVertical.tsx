@@ -9,7 +9,6 @@ import {
   Average,
   AverageText,
   ViewLoading,
-  Content,
 } from './styles';
 import {colors} from '../../global/styles/colors';
 
